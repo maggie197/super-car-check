@@ -1,8 +1,11 @@
-from flask import Blueprint
+from flask import Blueprint, request
 
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/login')
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
-    return 'login'
+    if request.method == 'POST':
+        return 'index'()
+    else:
+        return 'login'()
