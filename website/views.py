@@ -4,10 +4,7 @@ from markupsafe import escape
 views = Blueprint('views', __name__)
 
 @views.route('/')
-def index():
-    return render_template('index.html')
-
 @views.route('/<username>')
-def profile(username):
+def index(username=""):
     return render_template('index.html', username=username)
 
