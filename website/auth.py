@@ -15,3 +15,7 @@ def login():
     # the code below is executed if the request method
     # was GET or the credentials were invalid
     return render_template('login.html', error=error)
+
+@auth.route('/logout')
+def logout():
+    return "Logged out"
