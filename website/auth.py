@@ -1,20 +1,15 @@
-from flask import Blueprint, request, render_template
-
+from flask import Blueprint, render_template, request, redirect, url_for, session
 auth = Blueprint('auth', __name__)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
     if request.method == 'POST':
-        if (request.form['username'],
-           request.form['password']):
-            return (request.form['username'])
-        else:
-            error = 'Invalid username/password'
-    # the code below is executed if the request method
-    # was GET or the credentials were invalid
-    return render_template('login.html', error=error)
+        username = request.form["username"]
+        return redirect(url_for("views.index", username=username))
+
+    else:
+        return render_template('login.html')
 
 @auth.route('/logout')
 def logout():
