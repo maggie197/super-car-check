@@ -1,13 +1,13 @@
-from flask import Blueprint, url_for
+from flask import Blueprint, render_template
 from markupsafe import escape
 
 views = Blueprint('views', __name__)
 
 @views.route('/')
 def index():
-    return 'index'
+    return render_template('index.html')
 
-@views.route('/user/<username>')
+@views.route('/<username>')
 def profile(username):
-    return f'{username}\'s profile'
+    return render_template('index.html', username=username)
 
